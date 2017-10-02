@@ -3,5 +3,6 @@
   "requireCamelCaseOrUpperCaseIdentifiers": {"ignoreProperties": true },
   "maximumLineLength": 100,
   "validateIndentation": 2,
-  "disallowSpacesInsideObjectBrackets": false
+  "disallowSpacesInsideObjectBrackets": false,
+  "disallowMultipleLineStrings": false
 }

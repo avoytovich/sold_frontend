@@ -1,14 +1,20 @@
-import '../styles/image_viewer.css';
-import sum from './sum.js';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import reducer from './components/Login/loginReducer';
+import { Router, Route, browserHistory } from 'react-router';
+import { Main } from './../src/containers';
+import { SignUp } from './../src/components';
 
-console.log(sum(5, 315));
-const button = document.createElement('button');
-button.innerText = 'Click me';
-button.onclick = () => {
-  System.import('./image_viewer.js')
-    .then(module => {
-      module.default();
-    });
-};
+const store = createStore(reducer);
 
-document.body.appendChild(button);
+ReactDOM.render(
+  <Provider store={store}>
+    <Router path='/' history={browserHistory} >
+      <Route path='/main' component={Main} />
+      <Route path='/signup' component={SignUp} />
+    </Router>
+  </Provider>,
+  document.getElementById('root')
+);

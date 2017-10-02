@@ -4,7 +4,8 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const VENDOR_LIBS = [
-  'react'
+  'react', 'react-dom', 'react-bootstrap', 'redux', 'react-redux',
+  'react-router'
 ];
 
 module.exports = {
