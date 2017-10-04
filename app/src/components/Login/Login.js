@@ -51,7 +51,8 @@ export class Login extends React.Component {
             <Col xs={12} sm={12} md={12}>
               <Button bsStyle='info' type='submit'>
                 Log in
-              </Button> 
+              </Button>
+              <h5>{this.props.log.message}</h5> 
             </Col>
           </FormGroup>
       </Form>
