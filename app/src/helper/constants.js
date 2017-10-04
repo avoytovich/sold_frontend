@@ -1,0 +1,11 @@
+const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+const LOGIN_FAILURE = 'LOGIN_FAILURE';
+
+const API = {
+  HOST: 'http://localhost:',
+  PORT: '8033'
+};
+
+API.URL = API.HOST + API.PORT;
+
+export { API, LOGIN_SUCCESS, LOGIN_FAILURE };
