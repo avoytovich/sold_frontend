@@ -33,6 +33,7 @@ export class Login extends React.Component {
   };
 
   render() {
+    console.log('Login props', this.props);
     return (
       <Form horizontal onSubmit={this.handleSubmit.bind(this)}>
         <h4>Registration form for login</h4>
