@@ -1,4 +1,4 @@
-import { LOGIN_SUCCESS, LOGIN_FAILURE } from './../../helper/constants';
+import { LOGIN_SUCCESS, LOGIN_FAILURE, CHECK_TOKEN } from './../../helper/constants';
 
 const login = (state = {}, action) => {
   switch (action.type) {
@@ -13,6 +13,11 @@ const login = (state = {}, action) => {
         ...state,
         isValidDataInput: action.isValidDataInput,
         message: action.message
+      };
+    case CHECK_TOKEN:
+      return {
+        ...state,
+        isAuth: action.isAuth
       };
     default:
       return state;

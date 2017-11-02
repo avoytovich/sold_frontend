@@ -1,5 +1,6 @@
 const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 const LOGIN_FAILURE = 'LOGIN_FAILURE';
+const CHECK_TOKEN = 'CHECK_TOKEN';
 
 const API = {
   HOST: 'http://localhost:',
@@ -8,4 +9,4 @@ const API = {
 
 API.URL = API.HOST + API.PORT;
 
-export { API, LOGIN_SUCCESS, LOGIN_FAILURE };
+export { API, LOGIN_SUCCESS, LOGIN_FAILURE, CHECK_TOKEN };
