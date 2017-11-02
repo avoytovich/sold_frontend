@@ -1,7 +1,10 @@
-import request from 'superagent-defaults';
-import { API, LOGIN_SUCCESS, LOGIN_FAILURE } from './../../helper/constants';
+import { browserHistory } from 'react-router';
+import { API, LOGIN_SUCCESS, LOGIN_FAILURE, CHECK_TOKEN } from './../../helper/constants';
+import { request } from './../../helper/request';
 
-export const loginUserSuccess = message => {
+export const loginUserSuccess = (message, token) => {
+  sessionStorage.setItem('token', token);
+  browserHistory.push('/signup');
   return {
     type: LOGIN_SUCCESS,
     isValidDataInput: true,
@@ -17,6 +20,11 @@ export const loginUserFailure = message => {
   };
 };
 
+export const checkToken = () => ({
+  type: CHECK_TOKEN,
+  isAuth: !!sessionStorage.getItem('token')
+});
+
 export const loginUser = (email, password) => {
   let id;
   let isActivated;
@@ -26,6 +34,6 @@ export const loginUser = (email, password) => {
     .end((err, res) => {
       (err || !res.ok) &&
       dispatch(loginUserFailure(JSON.parse(res.text).message)) ||
-      dispatch(loginUserSuccess(JSON.parse(res.text).message));
+      dispatch(loginUserSuccess(JSON.parse(res.text).message, JSON.parse(res.text).token));
     });
 };
