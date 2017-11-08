@@ -4,9 +4,9 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { Router, Route, browserHistory } from 'react-router';
-import reducer from './components/Login/loginReducer';
+import reducer from './redux/combineReducer';
 import { Main } from './../src/containers';
-import { SignUp, Home } from './../src/components';
+import { SignUp } from './../src/components';
 import checkAuth from './../src/helper/redirections';
 
 const store = createStore(reducer, applyMiddleware(thunk));
@@ -15,7 +15,7 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory} >
       <Route path='/' component={Main} />
-      <Route path='/signup' component={SignUp} onEnter={checkAuth}/>
+      <Route path='/signup' component={SignUp} />
     </Router>
   </Provider>,
   document.getElementById('root')
