@@ -1,0 +1,21 @@
+.input_proposals {
+  margin: 10px auto;
+  width: 40%;
+}
+
+.proposal_block {
+  margin-top: 30px;
+}
+
+.proposal {
+  text-align: center;
+}
+
+.delete_proposal_button {
+  text-align: right;
+}
+
+.response {
+  text-align: center;
+  color: white;
+}
