@@ -15,10 +15,10 @@ export const signUpFailure = (message) => {
   };
 };
 
-export const signUp = (email, password) => {
+export const signUp = (email, password, name) => {
   return dispatch => request()
     .post(`${API.URL}/user`)
-    .send({email, password})
+    .send({email, password, name})
     .end((err, res) => {
       (err || !res.ok) &&
         dispatch(signUpFailure(JSON.parse(res.text).message)) ||
