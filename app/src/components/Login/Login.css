@@ -2,11 +2,15 @@ input, button {
   margin-top: 5px;
 }
 
-.email, .password {
+.email, .password, .name {
   margin: auto;
   width: 50%;
 }
 
 form {
   text-align: center;
+}
+
+.form-control {
+  border: 2px solid;
 }
