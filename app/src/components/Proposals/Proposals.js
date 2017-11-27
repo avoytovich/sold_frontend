@@ -76,7 +76,6 @@ export class Proposals extends React.Component {
   };
 
   render() {
-    console.log('Proposals', this.props);
     const { proposals } = this.props.proposal.proposalsList;
 
     return (
