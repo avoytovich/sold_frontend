@@ -5,6 +5,7 @@ import proposals from './../components/Proposals/proposalsReducer';
 import proposalsList from './../components/Proposals/getProposalsReducer';
 import offerSend from './../components/Proposals/sendOfferReducer';
 import deleteProposal from './../components/Proposals/deleteProposalReducer';
+import getUserName from './../containers/Navigation/navigationReducer';
 
 export default combineReducers({
   login,
@@ -12,5 +13,6 @@ export default combineReducers({
   proposals,
   proposalsList,
   offerSend,
-  deleteProposal
+  deleteProposal,
+  getUserName
 });
