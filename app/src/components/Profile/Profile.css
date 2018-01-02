@@ -1,0 +1,25 @@
+div.profile {
+  text-align: center;
+}
+
+h3.profile_info {
+  text-align: left;
+}
+
+.avatar {
+  float: left;
+  border-radius: 50%;
+  width: 250px;
+  height: 250px;
+  background-size: 100%;
+  background-image: url(../../../assets/profile.svg);
+  margin: 15px;
+}
+
+.profile_info {
+  text-align: left;
+}
+
+.edit_profile_info {
+  float: left;
+}

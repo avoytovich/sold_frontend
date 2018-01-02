@@ -5,7 +5,9 @@ import proposals from './../components/Proposals/proposalsReducer';
 import proposalsList from './../components/Proposals/getProposalsReducer';
 import offerSend from './../components/Proposals/sendOfferReducer';
 import deleteProposal from './../components/Proposals/deleteProposalReducer';
-import getUserName from './../containers/Navigation/navigationReducer';
+import getUserProfile from './../containers/Navigation/navigationReducer';
+import upload from './../components/ModalWindow/modalUploadReducer';
+import updateProfile from './../components/Profile/profileUpdateReducer';
 
 export default combineReducers({
   login,
@@ -14,5 +16,7 @@ export default combineReducers({
   proposalsList,
   offerSend,
   deleteProposal,
-  getUserName
+  getUserProfile,
+  upload,
+  updateProfile
 });

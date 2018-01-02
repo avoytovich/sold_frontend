@@ -1,5 +1,6 @@
 import { browserHistory } from 'react-router';
-import { API, LOGIN_SUCCESS, LOGIN_FAILURE, CHECK_TOKEN } from './../../helper/constants';
+import { API, LOGIN_SUCCESS, LOGIN_FAILURE, CHECK_TOKEN,
+  LOGOUT_USER } from './../../helper/constants';
 import { request } from './../../helper/request';
 
 export const loginUserSuccess = (message, token) => {
@@ -24,6 +25,15 @@ export const checkToken = () => ({
   type: CHECK_TOKEN,
   isAuth: !!sessionStorage.getItem('token')
 });
+
+export const logOut = () => {
+  sessionStorage.clear();
+  browserHistory.push('/');
+  return {
+    type: LOGOUT_USER,
+    message: 'You are signed out!'
+  };
+};
 
 export const loginUser = (email, password) => {
   let id;
