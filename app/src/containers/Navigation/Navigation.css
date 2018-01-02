@@ -7,3 +7,16 @@ ul.dropdown-menu {
   right: 0;
   left: auto;
 }
+
+.dropdown {
+  display: inline-block;
+}
+
+.small_avatar {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background-size: 100%;
+  background-image: url(../../../assets/profile.svg);
+  margin: 5px;
+}

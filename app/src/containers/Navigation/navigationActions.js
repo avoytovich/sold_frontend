@@ -8,10 +8,10 @@ export const getUserFailure = error => {
   };
 };
 
-export const getUserSuccess = name => {
+export const getUserSuccess = profile => {
   return {
     type: GET_USER_SUCCESS,
-    name
+    profile
   };
 };
 
@@ -21,6 +21,6 @@ export const getUser = () => {
     .end((err, res) => {
       (err || !res.ok) &&
         dispatch(getUserFailure(JSON.parse(res.error))) ||
-          dispatch(getUserSuccess(JSON.parse(res.text).name));
+          dispatch(getUserSuccess(JSON.parse(res.text).profile));
     });
 };
