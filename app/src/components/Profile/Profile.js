@@ -28,12 +28,10 @@ export class Profile extends React.Component {
   };
 
   render() {
-    
     console.log('Profile props', this.props);
 
     const { editProfile } = this.state;
     const { getUserProfile, updateProfile } = this.props.profile;
-    
     return (
       <Grid>
         <Row className='show-grid'>
