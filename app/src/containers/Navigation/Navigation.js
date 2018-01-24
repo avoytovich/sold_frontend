@@ -1,5 +1,5 @@
 import React from 'react';
-import { Nav, NavDropdown, MenuItem, Image} from 'react-bootstrap';
+import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Image} from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { getUser } from './navigationActions';
 import { connect } from 'react-redux';
@@ -22,23 +22,35 @@ export class Navigation extends React.Component {
 
     return (
       <div>
-        <div className='pull-right'>
-          <NavDropdown className='dropdown' title={`Hallo, ${updateProfile.profile &&
+        <Navbar>
+          <div className='pull-left'>
+            <Nav>
+              <LinkContainer to='/dashboard'>
+                <NavItem>Dashboard</NavItem>
+              </LinkContainer>
+              <LinkContainer to='/proposals'>
+                <NavItem>Proposals</NavItem>
+              </LinkContainer>
+            </Nav>
+          </div>
+          <div className='pull-right'>
+            <NavDropdown className='dropdown' title={`Hallo, ${updateProfile.profile &&
               updateProfile.profile.name || getUserProfile.profile &&
-            getUserProfile.profile.name}`} id='nav-dropdown'>
-            <MenuItem>Signed in as {updateProfile.profile &&
-              updateProfile.profile.name || getUserProfile.profile &&
-              getUserProfile.profile.name} </MenuItem>
-            <MenuItem divider />
-            <LinkContainer to='/profile'>
-              <MenuItem>Your Profile</MenuItem>
-            </LinkContainer>
-            <MenuItem onClick={this.props.logOut}>Sign out</MenuItem>
-          </NavDropdown>
-          {getUserProfile.profile &&
-            <Image className='small_avatar' src={updateProfile.profile &&
-              updateProfile.profile.avatar || getUserProfile.profile.avatar} alt='avatar' />}
-        </div>
+                getUserProfile.profile.name}`} id='nav-dropdown'>
+              <MenuItem>Signed in as {updateProfile.profile &&
+                updateProfile.profile.name || getUserProfile.profile &&
+                  getUserProfile.profile.name} </MenuItem>
+              <MenuItem divider />
+              <LinkContainer to='/profile'>
+                <MenuItem>Your Profile</MenuItem>
+              </LinkContainer>
+              <MenuItem onClick={this.props.logOut}>Sign out</MenuItem>
+            </NavDropdown>
+            {getUserProfile.profile &&
+              <Image className='small_avatar' src={updateProfile.profile &&
+                updateProfile.profile.avatar || getUserProfile.profile.avatar} alt='avatar' />}
+          </div>
+        </Navbar>
         {this.props.children}
       </div>
     );

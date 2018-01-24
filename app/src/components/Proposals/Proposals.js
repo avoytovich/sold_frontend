@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Row, Col, FormGroup, FormControl, Form, Button} from 'react-bootstrap';
+import { Grid, Row, Col, FormGroup, FormControl, Form, Button, Modal} from 'react-bootstrap';
 import './Proposals.css';
 import { addProposals } from './proposalsActions.js';
 import { getProposalsList } from './getProposalsActions.js';
@@ -16,7 +16,8 @@ export class Proposals extends React.Component {
     super(props);
     this.state = {
       title: '',
-      offer: ''
+      offer: '',
+      showModal: false
     };
   }
 
@@ -46,6 +47,17 @@ export class Proposals extends React.Component {
   addProposal = (e) => {
     e.preventDefault();
     this.props.addProposals(this.state.title);
+    this.setState({
+      showModal: !this.state.showModal
+    });
+  };
+
+  close = () => {
+    this.setState({ showModal: false });
+  };
+
+  open = () => {
+    this.setState({ showModal: true });
   };
 
   getProposalsList = () => {
@@ -83,25 +95,44 @@ export class Proposals extends React.Component {
       <Grid>
         <Row className='show-grid'>
           <Col xs={12} sm={12} md={12}>
-            <Form horizontal>
-              <FormGroup>
-                <img className='logo' src={require('./../../../assets/sold.png')} alt='logo' />
-                <FormControl
-                  className='input_proposals'
-                  componentClass='textarea'
-                  placeholder='add your proposal...'
-                  rows='3'
-                  onChange={this.handleChangeTitle}
-                />
-                <Button
-                  bsStyle='success'
-                  onClick={this.addProposal}
-                >
-                  Add proposal
-                </Button>
-                <h5>{this.props.proposal.proposals.message}</h5>
-              </FormGroup>
-            </Form>
+            <div className='add_proposal_button'>
+            <img className='logo' src={require('./../../../assets/sold.png')} alt='logo' />
+              <Button
+                bsStyle='success'
+                bsSize='large'
+                onClick={this.open}
+              >
+                Add Proposal
+              </Button>
+            </div>
+            <Modal show={this.state.showModal} onHide={this.close}>
+              <Modal.Header closeButton>
+                <Modal.Title>Add your proposal</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <Form horizontal>
+                  <FormGroup>
+                    <img className='logo' src={require('./../../../assets/sold.png')} alt='logo' />
+                    <FormControl
+                      className='input_proposals'
+                      componentClass='textarea'
+                      placeholder='add your proposal...'
+                      rows='3'
+                      onChange={this.handleChangeTitle}
+                    />
+                    <Button
+                      bsStyle='success'
+                      onClick={this.addProposal}
+                    >
+                      Add proposal
+                    </Button>
+                    <h5>{this.props.proposal.proposals.message}</h5>
+                  </FormGroup>
+                </Form>
+              </Modal.Body>
+              <Modal.Footer>
+              </Modal.Footer>
+            </Modal>
             {proposals && proposals.map((proposal, id) => {
               return (
                 <Col xs={12} sm={12} md={12} key={id} className='proposal_block'>

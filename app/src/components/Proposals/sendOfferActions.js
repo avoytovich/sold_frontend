@@ -17,7 +17,7 @@ export const sendOfferSuccess = message => {
 
 export const sendOffer = (title, offer) => {
   return dispatch => request()
-  .post(`${API.URL}/proposals/list/email`)
+  .post(`${API.URL}/offers/list/email`)
   .send({title, offer})
   .end((err, res) => {
     (err || !res.ok) &&

@@ -15,6 +15,10 @@
   text-align: right;
 }
 
+.add_proposal_button {
+  text-align: center;
+}
+
 .response {
   text-align: center;
   color: white;
