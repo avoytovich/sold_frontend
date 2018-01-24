@@ -5,7 +5,7 @@ import { request } from './../../helper/request';
 
 export const loginUserSuccess = (message, token) => {
   sessionStorage.setItem('token', token);
-  browserHistory.push('/proposals');
+  browserHistory.push('/dashboard');
   return {
     type: LOGIN_SUCCESS,
     isValidDataInput: true,

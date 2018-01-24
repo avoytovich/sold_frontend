@@ -6,7 +6,7 @@ import thunk from 'redux-thunk';
 import { Router, Route, browserHistory } from 'react-router';
 import reducer from './redux/combineReducer';
 import { Main, Navigation } from './../src/containers';
-import { SignUp, Proposals, Profile } from './../src/components';
+import { SignUp, Proposals, Profile, Dashboard } from './../src/components';
 import checkAuth from './../src/helper/redirections';
 
 const store = createStore(reducer, applyMiddleware(thunk));
@@ -18,6 +18,7 @@ ReactDOM.render(
       <Route path='/signup' component={SignUp} />
       <Route path='/user' component={Navigation} onEnter={checkAuth} >
         <Route path='/proposals' component={Proposals} onEnter={checkAuth} />
+        <Route path='/dashboard' component={Dashboard} onEnter={checkAuth} />
         <Route path='/profile' component={Profile} onEnter={checkAuth} />
       </Route>
     </Router>
