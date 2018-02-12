@@ -8,6 +8,7 @@ import deleteProposal from './../components/Proposals/deleteProposalReducer';
 import getUserProfile from './../containers/Navigation/navigationReducer';
 import upload from './../components/ModalWindow/modalUploadReducer';
 import updateProfile from './../components/Profile/profileUpdateReducer';
+import getMyProposalsList from './../components/Dashboard/getMyProposalsReducer';
 
 export default combineReducers({
   login,
@@ -18,5 +19,6 @@ export default combineReducers({
   deleteProposal,
   getUserProfile,
   upload,
-  updateProfile
+  updateProfile,
+  getMyProposalsList
 });
