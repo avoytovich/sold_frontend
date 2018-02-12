@@ -5,4 +5,4 @@ export SignUp from './SignUp/SignUp';
 export Proposals from './Proposals/Proposals';
 export Profile from './Profile/Profile';
 export ModalWindow from './ModalWindow/ModalWindow';
-export { Dashboard } from './Dashboard/Dashboard';
+export Dashboard from './Dashboard/Dashboard';
