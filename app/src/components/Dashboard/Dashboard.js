@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Grid, Row, Col, Button } from 'react-bootstrap';
 import { getMyProposals } from './getMyProposalsActions.js';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -28,9 +28,12 @@ export class Dashboard extends React.Component {
             <h3>Its your proposals :)</h3>
             {proposalsMy && proposalsMy.map((proposalMy, id) => {
               return (
-                <p key={id}>{proposalMy}</p>
+                <Button onClick={} key={id}>{proposalMy}</Button>
               );
             })}
+          </Col>
+          <Col xs={4} sm={4} md={4}>
+
           </Col>
         </Row>
       </Grid>
