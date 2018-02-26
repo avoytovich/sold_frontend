@@ -24,7 +24,7 @@ export class Dashboard extends React.Component {
     });
     setTimeout(() => {
       this.props.getMyOffersProposal(this.state.title);
-      }, 100);
+    }, 100);
   };
 
   render() {
@@ -48,7 +48,11 @@ export class Dashboard extends React.Component {
             <h3>Its your proposals :)</h3>
             {proposalsMy && proposalsMy.map((proposalMy, id) => {
               return (
-                <Button onClick={this.myOffersProposal.bind(this, proposalMy)} key={id}>{proposalMy}</Button>
+                <Button
+                  onClick={this.myOffersProposal.bind(this, proposalMy)}
+                  key={id} >
+                  {proposalMy}
+                </Button>
               );
             })}
           </Col>
