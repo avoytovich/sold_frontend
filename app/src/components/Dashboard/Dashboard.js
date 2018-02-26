@@ -1,6 +1,7 @@
 import React from 'react';
 import { Grid, Row, Col, Button } from 'react-bootstrap';
 import { getMyProposals } from './getMyProposalsActions.js';
+import { getMyOffersProposal } from './retrieveOffersProposalActions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -10,11 +11,30 @@ export class Dashboard extends React.Component {
     this.props.getMyProposals();
   }
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: ''
+    };
+  };
+
+  myOffersProposal(title) {
+    this.setState({
+      title
+    });
+    setTimeout(() => {
+      this.props.getMyOffersProposal(this.state.title);
+      }, 100);
+  };
+
   render() {
     console.log('Dashboard props', this.props);
 
+    //console.log('title state', this.state.title);
+
     const { proposalsMy } = this.props.proposalsMy.getMyProposalsList;
-    proposalsMy && console.log('proposalsMy', proposalsMy);
+    const { myOffersByProposal } = this.props.proposalsMy.getMyOffersByProposalList;
+    myOffersByProposal && console.log('myOffersByProposal', myOffersByProposal);
 
     return (
       <Grid>
@@ -28,7 +48,7 @@ export class Dashboard extends React.Component {
             <h3>Its your proposals :)</h3>
             {proposalsMy && proposalsMy.map((proposalMy, id) => {
               return (
-                <Button onClick={} key={id}>{proposalMy}</Button>
+                <Button onClick={this.myOffersProposal.bind(this, proposalMy)} key={id}>{proposalMy}</Button>
               );
             })}
           </Col>
@@ -42,7 +62,7 @@ export class Dashboard extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({getMyProposals}, dispatch);
+  return bindActionCreators({getMyProposals, getMyOffersProposal}, dispatch);
 };
 
 const mapStateToProps = (state) => {
