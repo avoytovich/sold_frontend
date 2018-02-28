@@ -46,7 +46,7 @@ export class Dashboard extends React.Component {
             </div>
           </Col>
           <Col xs={4} sm={4} md={4}>
-            <h3 className="proposalMy">your's proposals</h3>
+            <h3 className='proposalMy'>your's proposals</h3>
             <Accordion>
               {proposalsMy && proposalsMy.map((proposalMy, id) => {
 
@@ -58,7 +58,7 @@ export class Dashboard extends React.Component {
                             return (
                               <p
                                 key={id}
-                                className="offersByProposal"
+                                className='offersByProposal'
                                 /*onClick={this.myOffersProposal.bind(this, proposalMy)}*/
                               >
                                 {offer.title}
