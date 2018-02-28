@@ -1,0 +1,13 @@
+.proposalMy_button {
+    display: block;
+}
+
+h3.proposalMy, h3.offersByProposal {
+    color: white;
+    text-align: center;
+}
+
+p.offersByProposal {
+    color: black;
+    text-align: center;
+}
