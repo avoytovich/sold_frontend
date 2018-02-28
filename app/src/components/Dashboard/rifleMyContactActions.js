@@ -6,14 +6,14 @@ export const rifleMyContactFailure = error => {
   return {
     type: RIFLE_MY_CONTACT_FAILURE,
     error
-  }
+  };
 };
 
 export const rifleMyContactSuccess = message => {
   return {
     type: RIFLE_MY_CONTACT_SUCCESS,
     message
-  }
+  };
 };
 
 export const rifleMyContact = (title, contact) => {

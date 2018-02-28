@@ -1,8 +1,9 @@
 import React from 'react';
-import { Grid, Row, Col, FormGroup, FormControl, Form, Button, Panel, Accordion, Modal } from 'react-bootstrap';
+import { Grid, Row, Col, FormGroup, FormControl,
+  Form, Button, Panel, Accordion, Modal } from 'react-bootstrap';
 import { getMyProposals } from './getMyProposalsActions.js';
 import { getMyOffersProposal } from './retrieveOffersProposalActions';
-import { rifleMyContact } from "./rifleMyContactActions";
+import { rifleMyContact } from './rifleMyContactActions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import './Dashboard.css';
@@ -92,7 +93,10 @@ export class Dashboard extends React.Component {
                             <Modal.Body>
                               <Form horizontal>
                                 <FormGroup>
-                                  <img className='logo' src={require('./../../../assets/sold.png')} alt='logo' />
+                                  <img
+                                    className='logo'
+                                    src={require('./../../../assets/sold.png')}
+                                    alt='logo' />
                                   <FormControl
                                     className='input_proposals'
                                     componentClass='textarea'
