@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Row, Col, Button, Panel, Accordion } from 'react-bootstrap';
+import { Grid, Row, Col, FormGroup, FormControl, Form, Button, Panel, Accordion, Modal } from 'react-bootstrap';
 import { getMyProposals } from './getMyProposalsActions.js';
 import { getMyOffersProposal } from './retrieveOffersProposalActions';
 import { connect } from 'react-redux';
@@ -15,7 +15,9 @@ export class Dashboard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: ''
+      title: '',
+      subject: '',
+      showModal: false
     };
   };
 
@@ -26,6 +28,25 @@ export class Dashboard extends React.Component {
     setTimeout(() => {
       this.props.getMyOffersProposal(this.state.title);
     }, 100);
+  };
+
+  handleChangeSubject = e => {
+    e.preventDefault();
+    this.setState({
+      subject: e.target.value
+    });
+  };
+
+  send = () => {
+
+  };
+
+  close = () => {
+    this.setState({ showModal: false });
+  };
+
+  open = () => {
+    this.setState({ showModal: true });
   };
 
   render() {
@@ -49,24 +70,51 @@ export class Dashboard extends React.Component {
             <h3 className='proposalMy'>your's proposals</h3>
             <Accordion>
               {proposalsMy && proposalsMy.map((proposalMy, id) => {
-
                 return (
-
-                        <Panel header={proposalMy} eventKey={id} key={id}
-                               onClick={this.handleNodeGetMyOffersProposal.bind(this, proposalMy)} >
-                          {myOffersByProposal && myOffersByProposal.map((offer, id) => {
-                            return (
-                              <p
-                                key={id}
-                                className='offersByProposal'
-                                /*onClick={this.myOffersProposal.bind(this, proposalMy)}*/
-                              >
-                                {offer.title}
-                              </p>
-                            );
-                          })}
-                        </Panel>
-
+                  <Panel header={proposalMy} eventKey={id} key={id}
+                         onClick={this.handleNodeGetMyOffersProposal.bind(this, proposalMy)} >
+                    {myOffersByProposal && myOffersByProposal.map((offer, id) => {
+                      return (
+                        <div key={id}>
+                          <Button
+                            bsStyle='info'
+                            className='offersByProposal'
+                            onClick={this.open}
+                          >
+                            reply to this offer: {offer.title}
+                          </Button>
+                          <Modal show={this.state.showModal} onHide={this.close}>
+                            <Modal.Header closeButton>
+                              <Modal.Title>input your reply</Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>
+                              <Form horizontal>
+                                <FormGroup>
+                                  <img className='logo' src={require('./../../../assets/sold.png')} alt='logo' />
+                                  <FormControl
+                                    className='input_proposals'
+                                    componentClass='textarea'
+                                    placeholder='input your reply...'
+                                    rows='3'
+                                    onChange={this.handleChangeSubject}
+                                  />
+                                  <Button
+                                    bsStyle='success'
+                                    onClick={this.send}
+                                  >
+                                    send
+                                  </Button>
+                                  {/*<h5>{this.props.proposal.proposals.message}</h5>*/}
+                                </FormGroup>
+                              </Form>
+                            </Modal.Body>
+                            <Modal.Footer>
+                            </Modal.Footer>
+                          </Modal>
+                        </div>
+                      );
+                    })}
+                  </Panel>
                 );
               })}
             </Accordion>
