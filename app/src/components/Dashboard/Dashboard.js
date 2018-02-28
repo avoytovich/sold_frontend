@@ -2,6 +2,7 @@ import React from 'react';
 import { Grid, Row, Col, FormGroup, FormControl, Form, Button, Panel, Accordion, Modal } from 'react-bootstrap';
 import { getMyProposals } from './getMyProposalsActions.js';
 import { getMyOffersProposal } from './retrieveOffersProposalActions';
+import { rifleMyContact } from "./rifleMyContactActions";
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import './Dashboard.css';
@@ -16,7 +17,7 @@ export class Dashboard extends React.Component {
     super(props);
     this.state = {
       title: '',
-      subject: '',
+      contact: '',
       showModal: false
     };
   };
@@ -30,15 +31,15 @@ export class Dashboard extends React.Component {
     }, 100);
   };
 
+  send(title, contact) {
+    this.props.rifleMyContact(title, contact);
+  };
+
   handleChangeSubject = e => {
     e.preventDefault();
     this.setState({
-      subject: e.target.value
+      contact: e.target.value
     });
-  };
-
-  send = () => {
-
   };
 
   close = () => {
@@ -54,6 +55,7 @@ export class Dashboard extends React.Component {
 
     const { proposalsMy } = this.props.proposalsMy.getMyProposalsList;
     const { myOffersByProposal } = this.props.proposalsMy.getMyOffersByProposalList;
+    const { message } = this.props.proposalsMy.rifleMyContact;
 
     //proposalsMy && console.log('proposalsMy', proposalsMy);
     //myOffersByProposal && console.log('myOffersByProposal', myOffersByProposal);
@@ -66,7 +68,7 @@ export class Dashboard extends React.Component {
               <img className='logo' src={require('./../../../assets/sold.png')} alt='logo'/>
             </div>
           </Col>
-          <Col xs={4} sm={4} md={4}>
+          <Col xs={6} sm={6} md={6}>
             <h3 className='proposalMy'>your's proposals</h3>
             <Accordion>
               {proposalsMy && proposalsMy.map((proposalMy, id) => {
@@ -81,7 +83,7 @@ export class Dashboard extends React.Component {
                             className='offersByProposal'
                             onClick={this.open}
                           >
-                            reply to this offer: {offer.title}
+                            send your contact details to owner that offers this: {offer.title}
                           </Button>
                           <Modal show={this.state.showModal} onHide={this.close}>
                             <Modal.Header closeButton>
@@ -94,17 +96,17 @@ export class Dashboard extends React.Component {
                                   <FormControl
                                     className='input_proposals'
                                     componentClass='textarea'
-                                    placeholder='input your reply...'
+                                    placeholder='input additional information...'
                                     rows='3'
                                     onChange={this.handleChangeSubject}
                                   />
                                   <Button
                                     bsStyle='success'
-                                    onClick={this.send}
+                                    onClick={this.send.bind(this, offer.title, this.state.contact)}
                                   >
-                                    send
+                                    send your email to owner that offers this
                                   </Button>
-                                  {/*<h5>{this.props.proposal.proposals.message}</h5>*/}
+                                  <h5>{message && message.message}</h5>
                                 </FormGroup>
                               </Form>
                             </Modal.Body>
@@ -126,7 +128,7 @@ export class Dashboard extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({getMyProposals, getMyOffersProposal}, dispatch);
+  return bindActionCreators({getMyProposals, getMyOffersProposal, rifleMyContact}, dispatch);
 };
 
 const mapStateToProps = (state) => {

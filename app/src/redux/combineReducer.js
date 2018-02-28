@@ -10,6 +10,7 @@ import upload from './../components/ModalWindow/modalUploadReducer';
 import updateProfile from './../components/Profile/profileUpdateReducer';
 import getMyProposalsList from './../components/Dashboard/getMyProposalsReducer';
 import getMyOffersByProposalList from './../components/Dashboard/retrieveOffersProposalReducer';
+import rifleMyContact from './../components/Dashboard/rifleMyContactReducer';
 
 export default combineReducers({
   login,
@@ -22,5 +23,6 @@ export default combineReducers({
   upload,
   updateProfile,
   getMyProposalsList,
-  getMyOffersByProposalList
+  getMyOffersByProposalList,
+  rifleMyContact
 });

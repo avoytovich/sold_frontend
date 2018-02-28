@@ -20,7 +20,6 @@ export const getMyProposals = () => {
   return dispatch => request()
     .get(`${API.URL}/proposals/retrieve`)
     .end((err, res) => {
-      console.log(res);
       (err || !res.ok) &&
         dispatch(getMyProposalsFailure(JSON.parse(res.error))) ||
           dispatch(getMyProposalsSuccess(JSON.parse(res.text)));
