@@ -7,7 +7,6 @@ h3.proposalMy, h3.offersByProposal {
     text-align: center;
 }
 
-p.offersByProposal {
-    color: black;
-    text-align: center;
+button.offersByProposal {
+    margin: 5px;
 }
