@@ -69,62 +69,61 @@ export class Dashboard extends React.Component {
               <img className='logo' src={require('./../../../assets/sold.png')} alt='logo'/>
             </div>
           </Col>
-          <Col xs={6} sm={6} md={6}>
-            <h3 className='proposalMy'>your's proposals</h3>
-            <Accordion>
-              {proposalsMy && proposalsMy.map((proposalMy, id) => {
-                return (
-                  <Panel header={proposalMy} eventKey={id} key={id}
-                         onClick={this.handleNodeGetMyOffersProposal.bind(this, proposalMy)} >
-                    {myOffersByProposal && myOffersByProposal.map((offer, id) => {
-                      return (
-                        <div key={id}>
-                          <Button
-                            bsStyle='info'
-                            className='offersByProposal'
-                            onClick={this.open}
-                          >
-                            send your contact details to owner that offers this: {offer.title}
-                          </Button>
-                          <Modal show={this.state.showModal} onHide={this.close}>
-                            <Modal.Header closeButton>
-                              <Modal.Title>input your reply</Modal.Title>
-                            </Modal.Header>
-                            <Modal.Body>
-                              <Form horizontal>
-                                <FormGroup>
-                                  <img
-                                    className='logo'
-                                    src={require('./../../../assets/sold.png')}
-                                    alt='logo' />
-                                  <FormControl
-                                    className='input_proposals'
-                                    componentClass='textarea'
-                                    placeholder='input additional information...'
-                                    rows='3'
-                                    onChange={this.handleChangeSubject}
-                                  />
-                                  <Button
-                                    bsStyle='success'
-                                    onClick={this.send.bind(this, offer.title, this.state.contact)}
-                                  >
-                                    send your email to owner that offers this
-                                  </Button>
-                                  <h5>{message && message.message}</h5>
-                                </FormGroup>
-                              </Form>
-                            </Modal.Body>
-                            <Modal.Footer>
-                            </Modal.Footer>
-                          </Modal>
-                        </div>
-                      );
-                    })}
-                  </Panel>
-                );
-              })}
-            </Accordion>
-          </Col>
+          <h3 className='proposalMy'>list of your's proposals</h3>
+          <Accordion>
+            {proposalsMy && proposalsMy.map((proposalMy, id) => {
+              return (
+                <Panel header={proposalMy} eventKey={id} key={id}
+                       onClick={this.handleNodeGetMyOffersProposal.bind(this, proposalMy)} >
+                  {myOffersByProposal && myOffersByProposal.map((offer, id) => {
+                    return (
+                      <div key={id}>
+                        <Button
+                          bsStyle='info'
+                          className='offersByProposal'
+                          onClick={this.open}
+                        >
+                          send your contact details to owner that offers this:
+                          <p className='offer_title'>{offer.title}</p>
+                        </Button>
+                        <Modal show={this.state.showModal} onHide={this.close}>
+                          <Modal.Header closeButton>
+                            <Modal.Title>input your reply</Modal.Title>
+                          </Modal.Header>
+                          <Modal.Body>
+                            <Form horizontal>
+                              <FormGroup>
+                                <img
+                                  className='logo'
+                                  src={require('./../../../assets/sold.png')}
+                                  alt='logo' />
+                                <FormControl
+                                  className='input_proposals'
+                                  componentClass='textarea'
+                                  placeholder='input additional information...'
+                                  rows='3'
+                                  onChange={this.handleChangeSubject}
+                                />
+                                <Button
+                                  bsStyle='success'
+                                  onClick={this.send.bind(this, offer.title, this.state.contact)}
+                                >
+                                  send your email
+                                </Button>
+                                <h5>{message && message.message}</h5>
+                              </FormGroup>
+                            </Form>
+                          </Modal.Body>
+                          <Modal.Footer>
+                          </Modal.Footer>
+                        </Modal>
+                      </div>
+                    );
+                  })}
+                </Panel>
+              );
+            })}
+          </Accordion>
         </Row>
       </Grid>
     );
