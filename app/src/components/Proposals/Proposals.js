@@ -10,6 +10,7 @@ import { bindActionCreators } from 'redux';
 import { request } from './../../helper/request';
 import { API } from './../../helper/constants';
 
+
 export class Proposals extends React.Component {
 
   constructor(props) {
