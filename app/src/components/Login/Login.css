@@ -4,7 +4,7 @@ input, button {
 
 .email, .password, .name {
   margin: auto;
-  width: 50%;
+  width: 75%;
 }
 
 form {
@@ -13,4 +13,13 @@ form {
 
 .form-control {
   border: 2px solid;
+}
+
+.form-horizontal {
+  margin: 100px 0px;
+  color: black;
+  padding: 30px;
+  background-color: white;
+  opacity: 0.8;
+  border-radius: 20px;
 }

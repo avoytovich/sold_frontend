@@ -1,8 +1,10 @@
-body {
-  font-family: 'Poppins', sans-serif;
-}
-
 .about {
-  font-size: 14px;
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+  letter-spacing: 3px;
   text-align: center;
+  background-color: black;
+  opacity: 0.6;
+  border-radius: 20px;
 }

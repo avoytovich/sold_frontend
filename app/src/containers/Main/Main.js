@@ -11,10 +11,10 @@ export class Main extends React.Component {
           <Col xs={12} sm={12} md={12}>
             <Logo />
           </Col>
-          <Col xs={4} sm={4} md={4}>
+          <Col xs={6} sm={6} md={6}>
             <About />
           </Col>
-          <Col xs={8} sm={8} md={8}>
+          <Col xs={6} sm={6} md={6}>
             <Login />
           </Col>
         </Row>
