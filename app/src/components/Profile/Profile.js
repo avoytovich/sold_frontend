@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Row, Col, Image, Button} from 'react-bootstrap';
+import { Grid, Row, Col, Image} from 'react-bootstrap';
 import './Profile.css';
 import { ModalWindow } from './../../components';
 import { getUser } from './../../containers/Navigation/navigationActions';

@@ -7,8 +7,6 @@ import { deleteProposal } from './deleteProposalActions.js';
 import { sendOffer } from './sendOfferActions.js';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { request } from './../../helper/request';
-import { API } from './../../helper/constants';
 
 
 export class Proposals extends React.Component {
