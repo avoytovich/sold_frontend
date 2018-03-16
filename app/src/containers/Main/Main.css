@@ -1,3 +1,9 @@
 body, #root {
-  background: #5472ef;
+  font-family: 'Poppins', sans-serif;
+  color: #ffffff;
+  background: #853E00;
+  background-image: url('./../../../assets/background.jpg');
+  background-repeat: no-repeat;
+  background-position: center top;
 }
+
