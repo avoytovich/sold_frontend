@@ -1,6 +1,6 @@
 import React from 'react';
 import { browserHistory } from 'react-router';
-import { Col, Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import './Logo.css';
 
 export class Logo extends React.Component {
