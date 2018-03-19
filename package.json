@@ -7,7 +7,7 @@
     "clean": "rimraf build",
     "build": "npm run clean && webpack -p",
     "start:dev": "webpack-dev-server --history-api-fallback",
-    "start:prod": "NODE_ENV=production node server.js",
+    "start:prod": "npm run build && NODE_ENV=production node server.js",
     "test": "mocha --compilers js:babel-core/register --require ./app/test/test_helper.js --recursive ./app/test --require ignore-styles",
     "test:watch": "npm run test -- --watch"
   },
