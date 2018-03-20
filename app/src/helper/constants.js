@@ -23,12 +23,19 @@ const GET_MY_OFFERS_PROPOSAL_SUCCESS = 'GET_MY_OFFERS_PROPOSAL_FAILURE';
 const RIFLE_MY_CONTACT_FAILURE = 'RIFLE_MY_CONTACT_FAILURE';
 const RIFLE_MY_CONTACT_SUCCESS = 'RIFLE_MY_CONTACT_SUCCESS';
 
-const API = {
-  HOST: 'http://localhost:',
-  PORT: '8033'
-};
-
-API.URL = API.HOST + API.PORT;
+var API;
+if (process.env.NODE_ENV === 'production') {
+  API = {
+    HOST: 'https://radiant-tor-53924.herokuapp.com'
+  };
+  API.URL = API.HOST;
+} else {
+  API = {
+    HOST: 'http://localhost:',
+    PORT: '8033'
+  };
+  API.URL = API.HOST + API.PORT;
+}
 
 export { API, LOGIN_SUCCESS, LOGIN_FAILURE, CHECK_TOKEN, SIGNUP_SUCCESS, SIGNUP_FAILURE,
   ADD_PROPOSALS_FAILURE, ADD_PROPOSALS_SUCCESS, GET_PROPOSALS_LIST_FAILURE,
